@@ -5,19 +5,25 @@ body {
     -o-background-size: cover;
     background-size: cover;
     color: white;
-    font-family: Arial, sans-serif;
+    font-family: cursive;    
     text-align: center;
+    font-size: 60px;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    padding-top: 40px;
 }
-
 
 h1 {
-    margin-bottom: 50px;
-}
+    padding: 20px;
+    background: linear-gradient(45deg, rgba(255, 102, 0, 0.5), rgba(255, 204, 102, 0.5));
+    border-radius: 10px;
+    font-size: 1.5em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);  /* optional: add a little shadow to the text for better readability */
+    margin-bottom: 50px;}
 
 #clock {
     font-size: 50px;
@@ -32,13 +38,18 @@ h1 {
     align-items: center;
 }
 
+.button-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /*adjust the space between buttons as needed*/
+    margin-bottom: 10px; /*adjust the space between rows as needed*/
+}
 
 button {
     padding: 10px 20px;
-    margin: 10px;
     border: none;
     background: linear-gradient(45deg, rgba(255, 102, 0, 0.5), rgba(255, 204, 102, 0.5));
-    color: #333333;
+    color: #ebedee;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;

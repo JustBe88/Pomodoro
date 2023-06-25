@@ -6,11 +6,26 @@
 </head>
 <body>
     <h1>Pomodoro Clock</h1>
-    <div id="clock">
-        25:00
+    <!-- Display the clock on the screen -->
+    <div id="clock">25:00</div>
+    <!-- Container for the first row of buttons -->
+    <div class="button-row">
+        <!-- 'Work' button will set the timer to 25 minutes -->
+        <button id="work">Work</button>
+        <!-- 'Break' button will set the timer to 5 minutes -->
+        <button id="break">Break</button>
+        
     </div>
-    <button id="start">Start</button>
-    <button id="reset">Reset</button>
+    <!-- Container for the second row of buttons -->
+    <div class="button-row">
+        <!-- 'Start' button will start the timer -->
+        <button id="start">Start</button>
+        <!-- 'Pause' button will pause the timer -->
+        <button id="pause">Pause</button>
+        <!-- 'Reset' button will reset the timer to the initial state -->
+        <button id="reset">Reset</button>
+    </div>
+    <!-- Link the JavaScript code -->
     <script src="script.js"></script>
 </body>
 </html>
