@@ -4,18 +4,27 @@
     <title>Pomodoro Clock</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body class="original-theme">
     <h1>Pomodoro Clock</h1>
-    <!-- Display the clock on the screen -->
-    <div id="clock">25:00</div>
+
+    <div id="clock">
+        <svg id="progress-ring" viewBox="0 0 100 100">
+            <circle id="progress-ring-background" r="48" cx="50" cy="50"/>
+            <circle id="progress-ring-circle" r="48" cx="50" cy="50"/>
+        </svg>
+        <div id="timer">25:00</div>
+    </div>
+
     <!-- Container for the first row of buttons -->
     <div class="button-row">
         <!-- 'Work' button will set the timer to 25 minutes -->
         <button id="work">Work</button>
         <!-- 'Break' button will set the timer to 5 minutes -->
-        <button id="break">Break</button>
-        
+        <button id="break">Break</button>   
+        <button id="theme-switch">Switch Theme</button>
+
     </div>
+
     <!-- Container for the second row of buttons -->
     <div class="button-row">
         <!-- 'Start' button will start the timer -->
@@ -25,6 +34,7 @@
         <!-- 'Reset' button will reset the timer to the initial state -->
         <button id="reset">Reset</button>
     </div>
+    
     <!-- Link the JavaScript code -->
     <script src="script.js"></script>
 </body>
