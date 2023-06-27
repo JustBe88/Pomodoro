@@ -1,21 +1,17 @@
-let workTime = 25 * 60;
-let breakTime = 5 * 60;
-let currentTime = workTime;
-let isRunning = false;
-let timer = null;
+document.addEventListener('DOMContentLoaded', (event) => {
+    let workTime = 25 * 60;
+    let breakTime = 5 * 60;
+    let currentTime = workTime;
+    let isRunning = false;
+    let timer = null;
 
-let clock = document.getElementById('clock');
-let startButton = document.getElementById('start');
-let pauseButton = document.getElementById('pause');
-let resetButton = document.getElementById('reset');
-let workButton = document.getElementById('work');
-let breakButton = document.getElementById('break');
-let circle = document.querySelector('.progress-ring__circle');
-let radius = circle.r.baseVal.value;
-let circumference = radius * 2 * Math.PI;
-
-circle.style.strokeDasharray = `${circumference} ${circumference}`;
-circle.style.strokeDashoffset = `${circumference}`;
+    let clock = document.getElementById('clock');
+    let startButton = document.getElementById('start');
+    let pauseButton = document.getElementById('pause');
+    let resetButton = document.getElementById('reset');
+    let workButton = document.getElementById('work');
+    let breakButton = document.getElementById('break');
+    let progressBar = document.getElementById('progress-bar');
 
 function updateClock() {
     let minutes = Math.floor(currentTime / 60);
@@ -24,8 +20,7 @@ function updateClock() {
 }
 
 function setProgress(percent) {
-    const offset = circumference - percent / 100 * circumference;
-    circle.style.strokeDashoffset = offset;
+    progressBar.value = percent;
 }
 
 let totalSeconds = workTime;
@@ -108,4 +103,4 @@ themeSwitch.onclick = function() {
         body.classList.add('original-theme');
     }
     isOriginalTheme = !isOriginalTheme;
-};
+}});

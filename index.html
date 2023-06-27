@@ -9,11 +9,9 @@
 
     <div id="clock">
         <div id="timer">25:00</div>
-    
-        <svg class="progress-ring" width="120" height="120">
-            <circle class="progress-ring__circle" stroke="black" stroke-width="4" fill="red" r="58" cx="60" cy="60"/>
-        </svg>
     </div>
+
+    <progress id="progress-bar" value="0" max="100"></progress>
 
     <!-- Container for the first row of buttons -->
     <div class="button-row">
@@ -22,7 +20,6 @@
         <!-- 'Break' button will set the timer to 5 minutes -->
         <button id="break">Break</button>   
         <button id="theme-switch">Switch Theme</button>
-
     </div>
 
     <!-- Container for the second row of buttons -->
