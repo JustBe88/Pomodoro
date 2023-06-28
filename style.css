@@ -96,6 +96,16 @@ h1 {
 }
 
 #progress-bar::-webkit-progress-value {
+    background: rgba(255, 204, 102, 0.5); /* same gradient as the clock */
+    border-radius: 10px; /* rounded corners */
+}
+
+#progress-bar::-moz-progress-bar {
+    background: rgba(255, 204, 102, 0.5); /* same gradient as the clock */
+    border-radius: 10px; /* rounded corners */
+}
+
+#progress-bar::-webkit-progress-value {
     background: linear-gradient(68deg, rgba(2,0,36,1) 0%, rgba(121,71,9,1) 35%, rgba(0,212,255,1) 100%); /* same gradient as the clock */
     border-radius: 10px; /* rounded corners */
 }
