@@ -40,17 +40,20 @@ h1 {
 
 #clock {
     position: relative;
-    font-size: 50px;
-    margin: 20px;   
+    font-size: 100px;
+    font-weight: bold;
+    margin: 20px;
     padding: 20px;
-    background: linear-gradient(45deg, rgba(255, 102, 0, 0.5), rgba(255, 204, 102, 0.5));
     border-radius: 50%;
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    background: rgb(2,0,36);
+    background: linear-gradient(68deg, rgba(2,0,36,1) 0%, rgba(121,71,9,1) 35%, rgba(0,212,255,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 #theme-switch {
