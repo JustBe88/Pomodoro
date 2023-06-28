@@ -41,7 +41,7 @@ h1 {
 #clock {
     position: relative;
     font-size: 50px;
-    margin: 20px;
+    margin: 20px;   
     padding: 20px;
     background: linear-gradient(45deg, rgba(255, 102, 0, 0.5), rgba(255, 204, 102, 0.5));
     border-radius: 50%;
@@ -80,8 +80,27 @@ h1 {
 #progress-bar {
     width: 200px; /* same as the clock width */
     height: 20px;
-    margin: 0 auto; /* center the progress bar */
+    margin: 20px auto; /* center the progress bar */
+    background: rgba(255, 204, 102, 0.5); /* same gradient as the clock */
+    border: none;
+    border-radius: 10px; /* rounded corners */
 }
+
+#progress-bar::-webkit-progress-bar {
+    background: rgba(255, 204, 102, 0.5); /* same gradient as the clock */
+    border-radius: 10px; /* rounded corners */
+}
+
+#progress-bar::-webkit-progress-value {
+    background: rgba(255, 102, 0, 0.5); /* darker gradient */
+    border-radius: 10px; /* rounded corners */
+}
+
+#progress-bar::-moz-progress-bar {
+    background: rgba(255, 102, 0, 0.5); /* darker gradient */
+    border-radius: 10px; /* rounded corners */
+}
+
 
 .button-row {
     display: flex;

@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     let workTime = 25 * 60;
-    let breakTime = 5 * 60;
+    let breakTime = 1 * 30;
     let currentTime = workTime;
     let isRunning = false;
     let timer = null;
@@ -12,10 +12,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let workButton = document.getElementById('work');
     let breakButton = document.getElementById('break');
     let progressBar = document.getElementById('progress-bar');
+    let tickingSound = new Audio("ticking_sound.wav");
 
 function updateClock() {
-    let minutes = Math.floor(currentTime / 60);
-    let seconds = currentTime % 60;
+    let minutes = Math.floor(currentTime / 30);
+    let seconds = currentTime % 30;
     clock.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 
@@ -32,13 +33,14 @@ startButton.onclick = function() {
             if (currentTime < 0) {
                 currentTime = workTime;
             }
+            if (currentTime <= 3) {
+                tickingSound.play();
+            }
             let elapsedSeconds = totalSeconds - currentTime;
             let progress = (elapsedSeconds / totalSeconds) * 100;
             setProgress(progress);
             updateClock();
         }, 1000);
-        isRunning = true;
-    }
 };
 
 pauseButton.onclick = function() {
@@ -51,12 +53,14 @@ pauseButton.onclick = function() {
             if (currentTime < 0) {
                 currentTime = workTime;
             }
+            if (currentTime <= 3) {
+                tickingSound.play();
+            }
             let elapsedSeconds = totalSeconds - currentTime;
             let progress = (elapsedSeconds / totalSeconds) * 100;
             setProgress(progress);
             updateClock();
         }, 1000);
-        isRunning = true;
     }
 };
 
@@ -103,4 +107,4 @@ themeSwitch.onclick = function() {
         body.classList.add('original-theme');
     }
     isOriginalTheme = !isOriginalTheme;
-}});
+}}})
