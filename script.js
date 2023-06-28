@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     let workTime = 25 * 60;
-    let breakTime = 1 * 30;
+    let breakTime = 1 * 60;
     let currentTime = workTime;
     let isRunning = false;
     let timer = null;
@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let tickingSound = new Audio("ticking_sound.wav");
 
 function updateClock() {
-    let minutes = Math.floor(currentTime / 30);
-    let seconds = currentTime % 30;
+    let minutes = Math.floor(currentTime / 60);
+    let seconds = currentTime % 60;
     clock.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 
@@ -41,6 +41,8 @@ startButton.onclick = function() {
             setProgress(progress);
             updateClock();
         }, 1000);
+        isRunning = true;
+    }
 };
 
 pauseButton.onclick = function() {
@@ -107,4 +109,4 @@ themeSwitch.onclick = function() {
         body.classList.add('original-theme');
     }
     isOriginalTheme = !isOriginalTheme;
-}}})
+}})
