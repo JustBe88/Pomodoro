@@ -49,7 +49,9 @@ pauseButton.onclick = function() {
     if (isRunning) {
         clearInterval(timer);
         isRunning = false;
+        pauseButton.innerText = 'Resume'; // change the button text to 'Resume'
     } else {
+        clearInterval(timer); // clear the interval before creating a new one
         timer = setInterval(function() {
             currentTime--;
             if (currentTime < 0) {
@@ -63,6 +65,8 @@ pauseButton.onclick = function() {
             setProgress(progress);
             updateClock();
         }, 1000);
+        isRunning = true;
+        pauseButton.innerText = 'Pause'; // change the button text back to 'Pause'
     }
 };
 
