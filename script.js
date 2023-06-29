@@ -42,43 +42,14 @@ startButton.onclick = function() {
             updateClock();
         }, 1000);
         isRunning = true;
-        startButton.innerText = 'Stop'; // change the button text to 'Stop'
+        startButton.innerText = 'Pause'; // change the button text to 'Pause'
     } else {
         clearInterval(timer);
-        currentTime = workTime;
-        totalSeconds = workTime;
         isRunning = false;
-        setProgress(0);
-        updateClock();
         startButton.innerText = 'Start'; // change the button text back to 'Start'
     }
 };
 
-pauseButton.onclick = function() {
-    if (isRunning) {
-        clearInterval(timer);
-        isRunning = false;
-        pauseButton.innerText = 'Resume'; // change the button text to 'Resume'
-    } else {
-        clearInterval(timer); // clear the interval before creating a new one
-        timer = setInterval(function() {
-            currentTime--;
-            if (currentTime < 0) {
-                currentTime = workTime;
-            }
-            if (currentTime <= 3) {
-                tickingSound.play();
-            }
-            let elapsedSeconds = totalSeconds - currentTime;
-            let progress = (elapsedSeconds / totalSeconds) * 100;
-            setProgress(progress);
-            updateClock();
-        }, 1000);
-        isRunning = true;
-        pauseButton.innerText = 'Pause'; // change the button text back to 'Pause'
-    }
-
-};
 
 resetButton.onclick = function() {
     clearInterval(timer);
