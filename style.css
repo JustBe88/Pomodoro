@@ -82,7 +82,7 @@ h1 {
 
 
 #progress-bar {
-    width: 400  px; /* same as the clock width */
+    width: 400px; /* same as the clock width */
     height: 20px;
     margin: 20px auto; /* center the progress bar */
     background: yellow; /* change the background color to yellow */
