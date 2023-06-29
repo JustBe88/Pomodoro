@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let breakButton = document.getElementById('break');
     let progressBar = document.getElementById('progress-bar');
     let tickingSound = new Audio("ticking_sound.wav");
+    let lastSelectedTime = workTime; 
+
 
 function updateClock() {
     let minutes = Math.floor(currentTime / 60);
@@ -31,7 +33,7 @@ startButton.onclick = function() {
         timer = setInterval(function() {
             currentTime--;
             if (currentTime < 0) {
-                currentTime = workTime;
+                currentTime = lastSelectedTime;
             }
             if (currentTime <= 3) {
                 tickingSound.play();
@@ -53,8 +55,8 @@ startButton.onclick = function() {
 
 resetButton.onclick = function() {
     clearInterval(timer);
-    currentTime = workTime;
-    totalSeconds = workTime;
+    currentTime = lastSelectedTime; // change this line
+    totalSeconds = lastSelectedTime; // change this line
     isRunning = false;
     setProgress(0);
     updateClock();
@@ -64,6 +66,7 @@ workButton.onclick = function() {
     clearInterval(timer);
     currentTime = workTime;
     totalSeconds = workTime;
+    lastSelectedTime = workTime;
     isRunning = false;
     setProgress(0);
     updateClock();
@@ -73,6 +76,7 @@ breakButton.onclick = function() {
     clearInterval(timer);
     currentTime = breakTime;
     totalSeconds = breakTime;
+    lastSelectedTime = breakTime;
     isRunning = false;
     setProgress(0);
     updateClock();
@@ -80,7 +84,6 @@ breakButton.onclick = function() {
 
 updateClock();
 
-// Add code for switch theme button here
 let body = document.body;
 let themeSwitch = document.getElementById('theme-switch');
 let isOriginalTheme = true;
