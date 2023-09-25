@@ -1,100 +1,52 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    let workTime = 25 * 60;
-    let breakTime = 1 * 60;
-    let currentTime = workTime;
-    let isRunning = false;
-    let timer = null;
+const clock = document.getElementById('clock');
+const progressCircle = document.getElementById('progress-circle');
+const timer = document.getElementById('timer');
+const startStopButton = document.getElementById('start-stop');
+const resetButton = document.getElementById('reset');
 
-    let clock = document.getElementById('clock');
-    let startButton = document.getElementById('start');
-    let pauseButton = document.getElementById('pause');
-    let resetButton = document.getElementById('reset');
-    let workButton = document.getElementById('work');
-    let breakButton = document.getElementById('break');
-    let progressBar = document.getElementById('progress-bar');
-    let tickingSound = new Audio("ticking_sound.wav");
-    let lastSelectedTime = workTime; 
+let timeRemaining = 25 * 60; // 25 minutes in seconds
+let interval;
 
+// Start the timer
+startStopButton.addEventListener('click', () => {
+  if (interval) {
+    clearInterval(interval);
+    startStopButton.textContent = 'Start';
+  } else {
+    interval = setInterval(() => {
+      timeRemaining--;
 
-function updateClock() {
-    let minutes = Math.floor(currentTime / 60);
-    let seconds = currentTime % 60;
-    clock.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      // Update the progress circle
+      const progress = timeRemaining / (25 * 60);
+      progressCircle.style.strokeDashoffset = 360 - (360 * progress);
+
+      // Update the timer
+      timer.textContent = formatTime(timeRemaining);
+
+      // If the timer reaches zero, stop it and reset it
+      if (timeRemaining === 0) {
+        clearInterval(interval);
+        startStopButton.textContent = 'Start';
+        timer.textContent = '25:00';
+      }
+    }, 1000);
+
+    startStopButton.textContent = 'Stop';
+  }
+});
+
+// Reset the timer
+resetButton.addEventListener('click', () => {
+  clearInterval(interval);
+  timeRemaining = 25 * 60;
+  progressCircle.style.strokeDashoffset = 360;
+  timer.textContent = '25:00';
+});
+
+// Format the time in minutes and seconds
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const secondsRemaining = seconds % 60;
+
+  return `${minutes}:${secondsRemaining.toString().padStart(2, '0')}`;
 }
-
-function setProgress(percent) {
-    progressBar.value = percent;
-}
-
-let totalSeconds = workTime;
-
-startButton.onclick = function() {
-    if (!isRunning) {
-        timer = setInterval(function() {
-            currentTime--;
-            if (currentTime < 0) {
-                currentTime = lastSelectedTime;
-            }
-            if (currentTime <= 3) {
-                tickingSound.play();
-            }
-            let elapsedSeconds = totalSeconds - currentTime;
-            let progress = (elapsedSeconds / totalSeconds) * 100;
-            setProgress(progress);
-            updateClock();
-        }, 1000);
-        isRunning = true;
-        startButton.innerText = 'Pause'; // change the button text to 'Pause'
-    } else {
-        clearInterval(timer);
-        isRunning = false;
-        startButton.innerText = 'Start'; // change the button text back to 'Start'
-    }
-};
-
-
-resetButton.onclick = function() {
-    clearInterval(timer);
-    currentTime = lastSelectedTime; // change this line
-    totalSeconds = lastSelectedTime; // change this line
-    isRunning = false;
-    setProgress(0);
-    updateClock();
-};
-
-workButton.onclick = function() {
-    clearInterval(timer);
-    currentTime = workTime;
-    totalSeconds = workTime;
-    lastSelectedTime = workTime;
-    isRunning = false;
-    setProgress(0);
-    updateClock();
-};
-
-breakButton.onclick = function() {
-    clearInterval(timer);
-    currentTime = breakTime;
-    totalSeconds = breakTime;
-    lastSelectedTime = breakTime;
-    isRunning = false;
-    setProgress(0);
-    updateClock();
-};
-
-updateClock();
-
-let body = document.body;
-let themeSwitch = document.getElementById('theme-switch');
-let isOriginalTheme = true;
-
-themeSwitch.onclick = function() {
-    if (isOriginalTheme) {
-        body.classList.remove('original-theme');
-        body.classList.add('new-theme');
-    } else {
-        body.classList.remove('new-theme');
-        body.classList.add('original-theme');
-    }
-    isOriginalTheme = !isOriginalTheme;
-}})
