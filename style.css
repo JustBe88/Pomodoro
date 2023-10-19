@@ -1,41 +1,38 @@
-#pomodoro-timer {
-    width: 400px;
-    height: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid black;
-    background-color: white;
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('background-image-url'); /* Replace with the URL of your background image */
+    background-size: cover;
+    background-position: center;
   }
   
-  #clock-container {
+  #app {
+    position: relative;
+  }
+  
+  #timer-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+  
+  #progress-ring {
+    position: absolute;
     width: 100%;
     height: 100%;
-  }
-  
-  #clock {
-    width: 100%;
-    height: 100%;
-  }
-  
-  #progress-circle {
-    stroke-dasharray: 360;
-    stroke-dashoffset: 360;
   }
   
   #timer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
     font-weight: bold;
   }
   
-  #controls {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  button {
-    margin: 10px;
-    padding: 10px;
-    background-color: #ccc;
-    border: 1px solid black;
-    cursor: pointer;
-  }
   
