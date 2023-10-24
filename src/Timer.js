@@ -2,10 +2,16 @@ import './Timer.css';
 import React, { useState, useEffect, useRef } from 'react';
 import tickSound from './tick.wav';
 
+const POMODORO_TIME = 25 * 60;
+const BREAK_TIME = 5 * 60;
+
 function Timer() {
-    const [timeLeft, setTimeLeft] = useState(25 * 60); // 25 minutes in seconds
     const [isActive, setIsActive] = useState(false);
     const tickAudio = useRef(new Audio(tickSound));
+    const [isPomodoro, setIsPomodoro] = useState(true);
+    const [currentSessionTime, setCurrentSessionTime] = useState(POMODORO_TIME);
+
+    const [timeLeft, setTimeLeft] = useState(isPomodoro ? POMODORO_TIME : BREAK_TIME);
 
     const toggleTimer = () => {
         setIsActive(!isActive);
@@ -13,8 +19,10 @@ function Timer() {
 
     const handleReset = () => {
         setIsActive(false);
-        setTimeLeft(25 * 60);
+        setIsPomodoro(true);
+        setTimeLeft(POMODORO_TIME);
     };
+    
 
     useEffect(() => {
         let timer;
@@ -26,8 +34,11 @@ function Timer() {
                     }
                     if (prevTime <= 0) {
                         clearInterval(timer);
-                        return 0;
-                    }
+                        const nextSessionTime = isPomodoro ? BREAK_TIME : POMODORO_TIME;
+                        setIsPomodoro(!isPomodoro); // Switch modes
+                        setCurrentSessionTime(nextSessionTime);
+                        return nextSessionTime; // Reset timer
+                    }                    
                     return prevTime - 1;
                 });
             }, 1000);
@@ -36,8 +47,8 @@ function Timer() {
         }
     
         return () => clearInterval(timer);
-    }, [isActive]);
-
+    }, [isActive, isPomodoro]);
+    
     const formatTime = (seconds) => {
         const minutes = Math.floor(seconds / 60);
         const remainderSeconds = seconds % 60;
@@ -51,8 +62,8 @@ function Timer() {
                 <circle className="timer-circle-backdrop" cx="50" cy="50" r="45"></circle>
                 <circle className="timer-circle-progress" cx="50" cy="50" r="45" 
                         strokeDasharray="283" 
-                        strokeDashoffset={`${(1 - timeLeft / (25 * 60)) * 283}`}></circle>
-            </svg>
+                        strokeDashoffset={`${(1 - timeLeft / currentSessionTime) * 283}`}></circle>
+            </svg> 
             <div className="timer-controls">
                 <button onClick={toggleTimer}>{isActive ? 'Pause' : 'Start'}</button>
                 <button onClick={handleReset}>Reset</button>
