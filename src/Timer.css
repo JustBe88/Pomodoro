@@ -1,8 +1,20 @@
+/* Set the space background for the entire page */
+body {
+    font-family: 'Roboto', sans-serif; /* Example font */
+    background-image: url('spacebackground.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+}
 .timer-container {
     position: relative;
     width: 200px;
     height: 200px;
     margin: 50px auto;
+    border-radius: 50%; /* To maintain its circular shape */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* subtle shadow */
+
 }
 
 .timer-text {
@@ -10,8 +22,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 24px;
+    font-size: 44px;
     z-index: 1;
+    color: #FFF; 
+    font-weight:700
 }
 
 .timer-svg {
@@ -21,17 +35,20 @@
 
 .timer-circle-backdrop {
     fill: none;
-    stroke: #E6E6E6;
-    strokeWidth: 10;
+    stroke: #f3f0f0;
+    stroke-width: 3;
+    stroke: rgba(46, 46, 46, 0.5); /* semi-transparent for a softer appearance */
+    stroke: linear-gradient(to right, #FF5733, #FF4500); /* gradient color */
 }
 
 .timer-circle-progress {
     fill: none;
-    stroke: #FF4500;
-    strokeWidth: 10;
+    stroke: #be3503;
+    stroke-width: 3;
     transform: rotate(-90deg);
     transform-origin: center;
 }
+
 .timer-controls {
     margin-top: 20px;
     display: flex;
@@ -41,6 +58,17 @@
 
 .timer-controls button {
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
+    background-color: #be3503;
+    color: #FFF;
+    font-weight: bold;
+    border: 2px solid #be3503; /* Added border for better visibility */
+    border-radius: 5px;
+    transition: 0.3s;
+    box-shadow: 0 4px 8px rgba(202, 159, 159, 0.1); /* subtle shadow */
+    transition: all 0.3s ease; /* smoother transition */
+    &:hover {
+        transform: scale(1.05); /* subtle zoom on hover */
+    }
 }
