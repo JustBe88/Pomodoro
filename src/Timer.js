@@ -1,6 +1,9 @@
 import './Timer.css';
 import React, { useState, useEffect, useRef } from 'react';
 import tickSound from './tick.wav';
+import { faPlay, faPause, faRedo } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const POMODORO_TIME = 25 * 60;
 const BREAK_TIME = 5 * 60;
@@ -56,17 +59,23 @@ function Timer() {
     };
 
     return (
-        <div className="timer-container">
-            <div className="timer-text">{formatTime(timeLeft)}</div>
-            <svg className="timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <circle className="timer-circle-backdrop" cx="50" cy="50" r="45"></circle>
-                <circle className="timer-circle-progress" cx="50" cy="50" r="45" 
-                        strokeDasharray="283" 
-                        strokeDashoffset={`${(1 - timeLeft / currentSessionTime) * 283}`}></circle>
-            </svg> 
-            <div className="timer-controls">
-                <button onClick={toggleTimer}>{isActive ? 'Pause' : 'Start'}</button>
-                <button onClick={handleReset}>Reset</button>
+        <div className="timer-wrapper">
+            <div className="timer-container">
+                <div className="timer-text">{formatTime(timeLeft)}</div>
+                <svg className="timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle className="timer-circle-backdrop" cx="50" cy="50" r="45"></circle>
+                    <circle className="timer-circle-progress" cx="50" cy="50" r="45" 
+                            strokeDasharray="283" 
+                            strokeDashoffset={`${(1 - timeLeft / currentSessionTime) * 283}`}></circle>
+                </svg> 
+                <div className="timer-controls">
+                <FontAwesomeIcon 
+                    icon={isActive ? faPause : faPlay} 
+                    onClick={toggleTimer}/>
+                <FontAwesomeIcon 
+                    icon={faRedo}
+                    onClick={handleReset}/>
+                </div>
             </div>
         </div>
     );    
