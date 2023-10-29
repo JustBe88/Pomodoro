@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import tickSound from './tick.wav';
 import { faPlay, faPause, faRedo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import oceanVideo from './ocean_video.mp4';
 
 
 const POMODORO_TIME = 25 * 60;
@@ -61,6 +62,9 @@ function Timer() {
     return (
         <div className="timer-wrapper">
             <div className="timer-container">
+            <video autoPlay loop muted id="background-video">
+            <source src={oceanVideo} type="video/mp4" />
+            </video>
                 <div className="timer-text">{formatTime(timeLeft)}</div>
                 <svg className="timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <circle className="timer-circle-backdrop" cx="50" cy="50" r="45"></circle>
@@ -73,7 +77,6 @@ function Timer() {
                         icon={isActive ? faPause : faPlay} 
                         size='2x'
                         onClick={toggleTimer}/>
-                    
                     <FontAwesomeIcon className="custom-icon"
                         icon={faRedo} 
                         size='2x'
@@ -82,7 +85,5 @@ function Timer() {
             </div>
         </div>
     );
-    
 }
-
 export default Timer;

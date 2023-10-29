@@ -2,15 +2,13 @@
 /* Set the space background for the entire page */
 body {
     font-family: 'Roboto', sans-serif;
-    background-image: url('spacebackground.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 80vh; /* Cover full viewport height */
+    height: 100vh; /* Cover full viewport height */
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: flex-start; /* Align to the top */
     padding-top: 10%; /* Some padding from the top */
+    overflow: hidden; /* Hide scroll bars */
+
 }
 
 .timer-container {
@@ -21,6 +19,17 @@ body {
     border-radius: 50%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+#background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1; /* Place it behind other content */
+}
+
+
 .timer-text {
     position: absolute;
     top: 50%;
@@ -29,7 +38,8 @@ body {
     font-size: 60px;
     z-index: 1;
     color: #FFF; 
-    font-weight:700
+    font-weight:700;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .timer-svg {
@@ -47,7 +57,7 @@ body {
 
 .timer-circle-progress {
     fill: none;
-    stroke: #be3503;
+    stroke: #f3f0f0;
     stroke-width: 3;
     transform: rotate(-90deg);
     transform-origin: center;
@@ -76,7 +86,7 @@ body {
 
 .custom-icon:hover {
     transform: scale(1.05);
-    color: #be3503;
+    color: #45b9ce;
     background-color: transparent;
 }
 
