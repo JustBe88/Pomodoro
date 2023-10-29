@@ -4,8 +4,7 @@ import tickSound from './tick.wav';
 import { faPlay, faPause, faRedo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import oceanVideo from './ocean_video.mp4';
-
-
+import deskVideo from './Desk1.mp4';
 const POMODORO_TIME = 25 * 60;
 const BREAK_TIME = 5 * 60;
 
@@ -14,8 +13,8 @@ function Timer() {
     const tickAudio = useRef(new Audio(tickSound));
     const [isPomodoro, setIsPomodoro] = useState(true);
     const [currentSessionTime, setCurrentSessionTime] = useState(POMODORO_TIME);
-
     const [timeLeft, setTimeLeft] = useState(isPomodoro ? POMODORO_TIME : BREAK_TIME);
+    const [theme, setTheme] = useState('chill');
 
     const toggleTimer = () => {
         setIsActive(!isActive);
@@ -26,7 +25,6 @@ function Timer() {
         setIsPomodoro(true);
         setTimeLeft(POMODORO_TIME);
     };
-    
 
     useEffect(() => {
         let timer;
@@ -39,9 +37,9 @@ function Timer() {
                     if (prevTime <= 0) {
                         clearInterval(timer);
                         const nextSessionTime = isPomodoro ? BREAK_TIME : POMODORO_TIME;
-                        setIsPomodoro(!isPomodoro); // Switch modes
+                        setIsPomodoro(!isPomodoro);
                         setCurrentSessionTime(nextSessionTime);
-                        return nextSessionTime; // Reset timer
+                        return nextSessionTime;
                     }                    
                     return prevTime - 1;
                 });
@@ -49,7 +47,7 @@ function Timer() {
         } else {
             clearInterval(timer);
         }
-    
+
         return () => clearInterval(timer);
     }, [isActive, isPomodoro]);
     
@@ -60,18 +58,45 @@ function Timer() {
     };
 
     return (
-        <div className="timer-wrapper">
+        <div className={`timer-wrapper ${theme}`}>
+            {theme === 'chill' && (
+                <video autoPlay loop muted id="background-video">
+                    <source src={oceanVideo} type="video/mp4" />
+                </video>
+            )}
+            {theme === 'homeOffice' && (
+                <video autoPlay loop muted id="background-video">
+                    <source src={deskVideo} type="video/mp4" />
+                </video>
+            )}
+            <div className="theme-selector">
+                <label>
+                    <input 
+                        type="radio" 
+                        value="chill" 
+                        checked={theme === 'chill'} 
+                        onChange={(e) => setTheme(e.target.value)} 
+                    />
+                    Chill Theme
+                </label>
+                <label>
+                    <input 
+                        type="radio" 
+                        value="homeOffice" 
+                        checked={theme === 'homeOffice'} 
+                        onChange={(e) => setTheme(e.target.value)} 
+                    />
+                    Home Office
+                </label>
+            </div>
             <div className="timer-container">
-            <video autoPlay loop muted id="background-video">
-            <source src={oceanVideo} type="video/mp4" />
-            </video>
                 <div className="timer-text">{formatTime(timeLeft)}</div>
                 <svg className="timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <circle className="timer-circle-backdrop" cx="50" cy="50" r="45"></circle>
                     <circle className="timer-circle-progress" cx="50" cy="50" r="45" 
                             strokeDasharray="283" 
                             strokeDashoffset={`${(1 - timeLeft / currentSessionTime) * 283}`}></circle>
-                </svg> 
+                </svg>
                 <div className="timer-controls">
                     <FontAwesomeIcon className="custom-icon" 
                         icon={isActive ? faPause : faPlay} 
@@ -85,5 +110,5 @@ function Timer() {
             </div>
         </div>
     );
-}
+            }    
 export default Timer;
