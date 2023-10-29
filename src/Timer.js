@@ -69,16 +69,20 @@ function Timer() {
                             strokeDashoffset={`${(1 - timeLeft / currentSessionTime) * 283}`}></circle>
                 </svg> 
                 <div className="timer-controls">
-                <FontAwesomeIcon 
-                    icon={isActive ? faPause : faPlay} 
-                    onClick={toggleTimer}/>
-                <FontAwesomeIcon 
-                    icon={faRedo}
-                    onClick={handleReset}/>
+                    <FontAwesomeIcon className="custom-icon" 
+                        icon={isActive ? faPause : faPlay} 
+                        size='2x'
+                        onClick={toggleTimer}/>
+                    
+                    <FontAwesomeIcon className="custom-icon"
+                        icon={faRedo} 
+                        size='2x'
+                        onClick={handleReset}/>
                 </div>
             </div>
         </div>
-    );    
+    );
+    
 }
 
 export default Timer;

@@ -58,27 +58,27 @@ body {
     display: flex;
     justify-content: center;
     gap: 20px;
+    color: #f3f0f0;
 }
 
 .timer-controls i {
     font-size: 30px; /* Adjust icon size */
     cursor: pointer;
-    color: #FFF; /* White color for visibility */
+ /* color: #FFF; White color for visibility */
     background-color: #be3503; /* Background color */
     padding: 10px 20px;
     border: 2px solid #be3503; 
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(202, 159, 159, 0.1);
     transition: all 0.3s ease;
-
-    /* Hover effect */
-    &:hover {
-        transform: scale(1.05);
-        color: #be3503; /* Change icon color on hover */
-        background-color: #FFF; /* Change background color on hover */
     }
-}
+  
 
+.custom-icon:hover {
+    transform: scale(1.05);
+    color: #be3503;
+    background-color: transparent;
+}
 
 
 /* .timer-controls {
