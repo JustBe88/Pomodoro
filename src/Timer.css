@@ -121,6 +121,15 @@ body {
     margin-right: 5px;
 }
 
+#background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1; /* Place it behind other content */
+}
 
 
 /* .timer-controls {

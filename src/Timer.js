@@ -1,10 +1,11 @@
 import './Timer.css';
 import React, { useState, useEffect, useRef } from 'react';
-import tickSound from './tick.wav';
+import tickSound from './assets/tick.wav';
 import { faPlay, faPause, faRedo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import oceanVideo from './ocean_video.mp4';
-import deskVideo from './Desk1.mp4';
+import oceanVideo from './assets/ocean_video.mp4';
+import deskVideo from './assets/desk2.mp4';
+import deskPhoto from './assets/deskphoto.png'
 const POMODORO_TIME = 25 * 60;
 const BREAK_TIME = 5 * 60;
 
@@ -64,11 +65,13 @@ function Timer() {
                     <source src={oceanVideo} type="video/mp4" />
                 </video>
             )}
-            {theme === 'homeOffice' && (
-                <video autoPlay loop muted id="background-video">
-                    <source src={deskVideo} type="video/mp4" />
-                </video>
-            )}
+{theme === 'chill' ? (
+    <video autoPlay loop muted id="background-video">
+        <source src={oceanVideo} type="video/mp4" />
+    </video>
+) : (
+    <img src={deskPhoto} alt="Home Office Theme" id="background-image" />
+)}
             <div className="theme-selector">
                 <label>
                     <input 
