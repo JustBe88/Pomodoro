@@ -57,7 +57,6 @@ function Timer() {
         const remainderSeconds = seconds % 60;
         return `${minutes}:${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`;
     };
-
     return (
         <div className={`timer-wrapper ${theme}`}>
             {theme === 'chill' && (
@@ -112,6 +111,7 @@ function Timer() {
                 </div>
             </div>
         </div>
+        
     );
             }    
 export default Timer;

@@ -1,0 +1,4 @@
+Pomodoro to-do 
+
+change icons from fontawesome to local
+find multiple office pics and put them into a video
