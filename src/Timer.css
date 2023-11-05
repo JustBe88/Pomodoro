@@ -1,25 +1,30 @@
-
 /* Set the space background for the entire page */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     height: 100vh; /* Cover full viewport height */
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: flex-start; /* Align to the top */
     padding-top: 10%; /* Some padding from the top */
     overflow: hidden; /* Hide scroll bars */
-
 }
 
 .timer-container {
-    position: relative;
-    margin-top: 100px; /* Adjust this value as needed */
-    width: 300px;
-    height: 300px;
-    margin: 100 auto; /* Adjust as needed */
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+        position: relative;
+        margin-bottom: 100px auto; /* Provides top margin and centers horizontally */
+        width: 340px; /* Adjusted for rectangle */
+        height: 550px; /* Height should adjust to content */
+        padding: 20px; /* Padding inside the container */
+        border-radius: 15px; /* Less rounded corners for a rectangle */
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5); /* Gentle shadow */
+        background: rgba(236, 235, 235, 0.075); /* Semi-transparent background */
+        backdrop-filter: blur(3px); /* Frosted glass effect */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
 #background-video {
     position: fixed;
     top: 0;
@@ -33,7 +38,7 @@ body {
 
 .timer-text {
     position: absolute;
-    top: 50%;
+    top: 54%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 60px;
@@ -68,8 +73,9 @@ body {
     margin-top: 20px;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
     color: #f3f0f0;
+
 }
 
 .timer-controls i {
@@ -80,7 +86,7 @@ body {
     padding: 10px 20px;
     border: 2px solid #be3503; 
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(202, 159, 159, 0.1);
+    box-shadow: 0 4px 8px rgba(124, 122, 122, 0.3);
     transition: all 0.3s ease;
     }
   
@@ -102,6 +108,7 @@ body {
 
 .switch-theme-btn {
     margin-top: 50px /* Adjust this value as needed */
+    
 }
 
 .theme-selector {
@@ -110,11 +117,14 @@ body {
     gap: 15px;
     margin-top: 40px;
     margin-bottom: -40px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: x-large;
 }
 
 .theme-selector label {
     color: #FFF; 
     cursor: pointer;
+    margin-bottom: 80px;
 }
 
 .theme-selector input[type="radio"] {

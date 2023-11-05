@@ -56,7 +56,7 @@ function Timer() {
         const minutes = Math.floor(seconds / 60);
         const remainderSeconds = seconds % 60;
         return `${minutes}:${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`;
-    };
+    }
     return (
         <div className={`timer-wrapper ${theme}`}>
             {theme === 'chill' && (
@@ -71,6 +71,8 @@ function Timer() {
 ) : (
     <img src={deskPhoto} alt="Home Office Theme" id="background-image" />
 )}
+
+            <div className="timer-container">
             <div className="theme-selector">
                 <label>
                     <input 
@@ -90,8 +92,7 @@ function Timer() {
                     />
                     Home Office
                 </label>
-            </div>
-            <div className="timer-container">
+            </div>              
                 <div className="timer-text">{formatTime(timeLeft)}</div>
                 <svg className="timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <circle className="timer-circle-backdrop" cx="50" cy="50" r="45"></circle>
