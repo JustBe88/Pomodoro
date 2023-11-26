@@ -4,7 +4,7 @@ import tickSound from './assets/tick.wav';
 import { faPlay, faPause, faRedo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import oceanVideo from './assets/ocean_video.mp4';
-import deskVideo from './assets/desk2.mp4';
+import deskVideo from './assets/working_desk.mp4';
 import deskPhoto from './assets/deskphoto.png'
 const POMODORO_TIME = 25 * 60;
 const BREAK_TIME = 5 * 60;
@@ -61,12 +61,12 @@ function Timer() {
         <div className={`timer-wrapper ${theme}`}>
             {theme === 'chill' && (
                 <video autoPlay loop muted id="background-video">
-                    <source src={oceanVideo} type="video/mp4" />
+                    <source src={deskVideo} type="video/mp4" />
                 </video>
             )}
 {theme === 'chill' ? (
     <video autoPlay loop muted id="background-video">
-        <source src={oceanVideo} type="video/mp4" />
+        <source src={deskVideo} type="video/mp4" />
     </video>
 ) : (
     <img src={deskPhoto} alt="Home Office Theme" id="background-image" />
@@ -74,7 +74,7 @@ function Timer() {
 
             <div className="timer-container">
             <div className="theme-selector">
-                <label>
+                {/* <label>
                     <input 
                         type="radio" 
                         value="chill" 
@@ -82,8 +82,8 @@ function Timer() {
                         onChange={(e) => setTheme(e.target.value)} 
                     />
                     Chill Theme
-                </label>
-                <label>
+                </label> */}
+                {/* <label>
                     <input 
                         type="radio" 
                         value="homeOffice" 
@@ -91,7 +91,7 @@ function Timer() {
                         onChange={(e) => setTheme(e.target.value)} 
                     />
                     Home Office
-                </label>
+                </label> */}
             </div>              
                 <div className="timer-text">{formatTime(timeLeft)}</div>
                 <svg className="timer-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
