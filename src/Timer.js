@@ -58,12 +58,23 @@ function Timer() {
         return `${minutes}:${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`;
     }
     return (
+        
         <div className={`timer-wrapper ${theme}`}>
             {theme === 'chill' && (
                 <video autoPlay loop muted id="background-video">
                     <source src={deskVideo} type="video/mp4" />
                 </video>
             )}
+            <div className="timer-controls">
+            <FontAwesomeIcon className="custom-icon" 
+                icon={isActive ? faPause : faPlay} 
+                size='2x'
+                onClick={toggleTimer}/>
+            <FontAwesomeIcon className="custom-icon"
+                icon={faRedo} 
+             size='2x'
+             onClick={handleReset}/>
+            </div>
 {theme === 'chill' ? (
     <video autoPlay loop muted id="background-video">
         <source src={deskVideo} type="video/mp4" />
@@ -100,16 +111,7 @@ function Timer() {
                             strokeDasharray="283" 
                             strokeDashoffset={`${(1 - timeLeft / currentSessionTime) * 283}`}></circle>
                 </svg>
-                <div className="timer-controls">
-                    <FontAwesomeIcon className="custom-icon" 
-                        icon={isActive ? faPause : faPlay} 
-                        size='2x'
-                        onClick={toggleTimer}/>
-                    <FontAwesomeIcon className="custom-icon"
-                        icon={faRedo} 
-                        size='2x'
-                        onClick={handleReset}/>
-                </div>
+
             </div>
         </div>
         

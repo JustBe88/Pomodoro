@@ -70,14 +70,15 @@ body {
 }
 
 .timer-controls {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    color: #f3f0f0;
-
+    position: fixed; /* Fixed positioning relative to the viewport */
+    top: 0;
+    left: 0; /* Adjust this value to move the controls off-screen */
+    z-index: 100; /* High z-index to ensure they are on top of other elements */
 }
 
+.timer-wrapper {
+    position: relative;
+}
 .timer-controls i {
     font-size: 30px; /* Adjust icon size */
     cursor: pointer;
@@ -93,7 +94,7 @@ body {
 
 .custom-icon:hover {
     transform: scale(1.05);
-    color: #45b9ce;
+    color: #45b9ce00;
     background-color: transparent;
 }
 
